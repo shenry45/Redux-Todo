@@ -14,7 +14,10 @@ class ToDoList extends React.Component {
     e.preventDefault();
 
     if (this.state.task.length > 1) {
-      this.props.addToDo(this.state.task);
+
+      this.setState(  prevState => { id: prevState.id++ });
+
+      this.props.addToDo(this.state.task, this.props.id);
   
       this.setState({task: ''});
     }
@@ -46,7 +49,8 @@ class ToDoList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    toDoList: state.toDoList
+    toDoList: state.toDoList,
+    id: state.id
   }
 }
 

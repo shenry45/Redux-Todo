@@ -6,7 +6,7 @@ const ToDo = (props) => {
     <ToDoEl className="todo">
       <p>{props.task.text}</p>
       <button>Edit</button>
-      <button>Delete</button>
+      <button>Completed</button>
     </ToDoEl>
   )
 }
@@ -26,7 +26,7 @@ const ToDoEl = styled.div`
     margin: 0 20px 0 0;
   }
   button {
-    width: 75px;
+    min-width: 75px;
     margin-right: 10px;
   }
 `;

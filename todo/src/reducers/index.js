@@ -1,12 +1,15 @@
-import { ADD_TODO } from '../actions'; // returns only file available
+import { ADD_TODO } from '../actions'; // returns only file available, action creator
 
 const initialState = {
+  id: 2,
   toDoList: [
     {
+      id: 1,
       text: 'Help Dad',
       completed: false
     },
     {
+      id: 2,
       text: 'Clean my room',
       completed: false
     }
