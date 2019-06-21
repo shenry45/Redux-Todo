@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToDo } from '../actions';
+import { addToDo, completeToDo } from '../actions';
 
 import ToDo from './ToDo';
 import ToDoForm from './ToDoForm';
@@ -14,13 +14,14 @@ class ToDoList extends React.Component {
     e.preventDefault();
 
     if (this.state.task.length > 1) {
-
-      this.setState(  prevState => { id: prevState.id++ });
-
       this.props.addToDo(this.state.task, this.props.id);
   
       this.setState({task: ''});
     }
+  }
+
+  handlerCompleteToDo = id => {
+    this.props.completeToDo(id);
   }
 
   handlerChange = e => {
@@ -39,7 +40,10 @@ class ToDoList extends React.Component {
         />
         {
           this.props.toDoList.map(task => (
-            <ToDo task={task} />
+            <ToDo
+              task={task}
+              handlerCompleteToDo={this.handlerCompleteToDo}
+            />
           ))
         }
       </div>
@@ -54,4 +58,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { addToDo })(ToDoList);
+export default connect(mapStateToProps, { addToDo, completeToDo })(ToDoList);

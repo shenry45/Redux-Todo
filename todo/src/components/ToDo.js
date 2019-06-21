@@ -3,10 +3,8 @@ import styled from 'styled-components';
 
 const ToDo = (props) => {
   return (
-    <ToDoEl className="todo">
+    <ToDoEl className="todo" onClick={() => props.handlerCompleteToDo(props.task.id)}>
       <p>{props.task.text}</p>
-      <button>Edit</button>
-      <button>Completed</button>
     </ToDoEl>
   )
 }
