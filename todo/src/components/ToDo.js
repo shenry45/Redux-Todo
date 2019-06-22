@@ -3,9 +3,24 @@ import styled from 'styled-components';
 
 const ToDo = (props) => {
   return (
-    <ToDoEl className="todo" onClick={() => props.handlerCompleteToDo(props.task.id)}>
-      <p>{props.task.text}</p>
-    </ToDoEl>
+    <div>
+      {props.task.completed ? (
+        <ToDoEl
+          className="todo"
+          onClick={() => props.handlerCompleteToDo(props.task.id)}
+        >
+          <p>{props.task.text}</p>
+        </ToDoEl>
+      ) : (
+        <ToDoEl
+          className="todo complete"
+          onClick={() => props.handlerCompleteToDo(props.task.id)}
+        >
+          <p>{props.task.text}</p>
+        </ToDoEl>
+           )
+      }
+    </div>
   )
 }
 
@@ -19,6 +34,10 @@ const ToDoEl = styled.div`
   border: 1px solid #cacaca;
   border-radius: 10px;
   background: #dedede;
+
+  &.complete {
+    background: green;
+  }
 
   p {
     margin: 0 20px 0 0;

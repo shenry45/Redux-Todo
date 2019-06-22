@@ -34,7 +34,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         toDoList: state.toDoList.map(
-          el => el.id === action.payload.id ? {...el, completed: true} : el
+          el => el.id === action.payload.id ? {...el, completed: !el.completed} : el
         )
       }
     default:
