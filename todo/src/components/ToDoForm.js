@@ -7,6 +7,7 @@ function ToDoForm(props) {
         type="text"
         onChange={props.handlerChange}
         value={props.task}
+        placeholder="New Task"
       ></input>
       <button type="submit" onClick={props.handlerAddToDo}>Add To Do</button>
     </form>

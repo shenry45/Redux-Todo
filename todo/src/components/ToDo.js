@@ -6,14 +6,14 @@ const ToDo = (props) => {
     <div>
       {props.task.completed ? (
         <ToDoEl
-          className="todo"
+          className="todo complete"
           onClick={() => props.handlerCompleteToDo(props.task.id)}
         >
           <p>{props.task.text}</p>
         </ToDoEl>
       ) : (
         <ToDoEl
-          className="todo complete"
+          className="todo"
           onClick={() => props.handlerCompleteToDo(props.task.id)}
         >
           <p>{props.task.text}</p>
@@ -33,10 +33,14 @@ const ToDoEl = styled.div`
   padding: 20px;
   border: 1px solid #cacaca;
   border-radius: 10px;
-  background: #dedede;
+  background: #f5f5f5;
 
   &.complete {
-    background: green;
+    background: #d2d2d2;
+
+    p {
+      text-decoration: line-through;
+    }
   }
 
   p {
