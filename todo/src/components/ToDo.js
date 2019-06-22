@@ -4,19 +4,18 @@ import styled from 'styled-components';
 const ToDo = (props) => {
   return (
     <div>
-      {props.task.completed ? (
+      {props.task.completed ? ( // if task is complete
         <ToDoEl
           className="todo complete"
-          onClick={() => props.handlerCompleteToDo(props.task.id)}
         >
-          <p>{props.task.text}</p>
+          <p onClick={() => props.handlerCompleteToDo(props.task.id)}>{props.task.text}</p>
+          <button onClick={() => props.handlerDeleteToDo(props.task.id)}>Delete</button>
         </ToDoEl>
       ) : (
         <ToDoEl
           className="todo"
-          onClick={() => props.handlerCompleteToDo(props.task.id)}
         >
-          <p>{props.task.text}</p>
+          <p onClick={() => props.handlerCompleteToDo(props.task.id)}>{props.task.text}</p>
         </ToDoEl>
            )
       }
@@ -25,10 +24,9 @@ const ToDo = (props) => {
 }
 
 const ToDoEl = styled.div`
-  cursor: pointer;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  flex-flow: row nowrap;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   padding: 10px 40px;
@@ -45,6 +43,8 @@ const ToDoEl = styled.div`
   }
 
   p {
+    cursor: pointer;
+    width: 100%;
     font-size: 1.25rem;
     margin: 0 20px 0 0;
     word-break: break-word;

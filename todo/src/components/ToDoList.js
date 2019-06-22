@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToDo, completeToDo } from '../actions';
+import { addToDo, completeToDo, deleteToDo } from '../actions';
 
 import ToDo from './ToDo';
 import ToDoForm from './ToDoForm';
@@ -24,6 +24,10 @@ class ToDoList extends React.Component {
     this.props.completeToDo(id);
   }
 
+  handlerDeleteToDo = id => {
+    this.props.deleteToDo(id);
+  }
+
   handlerChange = e => {
     e.preventDefault();
 
@@ -41,8 +45,10 @@ class ToDoList extends React.Component {
         {
           this.props.toDoList.map(task => (
             <ToDo
+              key={task.id}
               task={task}
               handlerCompleteToDo={this.handlerCompleteToDo}
+              handlerDeleteToDo={this.handlerDeleteToDo}
             />
           ))
         }
@@ -58,4 +64,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { addToDo, completeToDo })(ToDoList);
+export default connect(mapStateToProps, { addToDo, completeToDo, deleteToDo })(ToDoList);

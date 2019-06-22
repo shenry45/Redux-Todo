@@ -1,4 +1,4 @@
-import { ADD_TODO, COMPLETE_TODO } from '../actions'; // returns only file available, action creator
+import { ADD_TODO, COMPLETE_TODO, DELETE_TODO } from '../actions'; // returns only file available, action creator
 
 const initialState = {
   id: 2,
@@ -18,7 +18,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ADD_TODO: // check action type is to add todo
+    case ADD_TODO: // adds todo
       state = {
         ...state,
         id: action.payload.id
@@ -30,12 +30,17 @@ export default (state = initialState, action) => {
           action.payload
         ]
       }
-    case COMPLETE_TODO: // check if completed action
+    case COMPLETE_TODO: // mark todo completed
       return {
         ...state,
         toDoList: state.toDoList.map(
           el => el.id === action.payload.id ? {...el, completed: !el.completed} : el
-        )
+        ) // convert completed bool to opposite of matching ID todo
+      }
+    case DELETE_TODO: // deletes to do
+      return {
+        ...state,
+        toDoList: state.toDoList.filter(todo => todo.id !== action.payload.id) // find all todos not matching in ID
       }
     default:
       return state
