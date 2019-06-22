@@ -17,6 +17,8 @@ const AppEl = styled.div`
 
   h1 {
     text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
   }
 `;
 
